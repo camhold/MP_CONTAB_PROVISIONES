@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_mp_grupo_provision,account_mp_grupo_provision,model_mp_grupo_provision,base.group_user,1,1,1,1
+access_account_mp_provision,mp_provision,model_mp_provision,base.group_user,1,1,1,1
+access_account_mp_provision_account_move,mp_provision_account_move,model_mp_provision_account_move,base.group_user,1,1,1,1
+access_account_mp_provision_journal_item,mp_provision_journal_item,model_mp_provision_journal_item,base.group_user,1,1,1,1
+access_account_mp_provision_item_line,mp_provision_item_line,model_mp_provision_item_line,base.group_user,1,1,1,1

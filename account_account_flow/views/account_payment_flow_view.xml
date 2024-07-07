@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mp_provision_tree" model="ir.ui.view">
+        <field name="name">mp.provision.tree</field>
+        <field name="model">mp.provision</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="mp_grupo_provision_ids" widget="many2many_tags" options="{'no_create': True, 'no_open':True}"/>
+                <field name="codigo"/>
+                <field name="decripcion"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_grupo_provision_form" model="ir.ui.view">
+        <field name="name">mp.grupo.provision.form</field>
+        <field name="model">mp.grupo.provision</field>
+        <field name="arch" type="xml">
+            <form string="MP Grupo provision">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                    </group>
+                    <group>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_provision_form" model="ir.ui.view">
+        <field name="name">mp.provision.form</field>
+        <field name="model">mp.provision</field>
+        <field name="arch" type="xml">
+            <form string="MP provision">
+                <sheet>
+                    <group>
+                        <field name="mp_grupo_provision_ids" widget="many2many_tags" options="{'no_create': True, 'no_open':True}"/>
+                    </group>
+                    <group>
+                        <field name="codigo"/>
+                    </group>
+                    <group>
+                        <field name="decripcion"/>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Cuentas Ligadas">
+                                <field name="mp_provision_item_line_ids" force_save="1" mode="tree" options="{'create': False, 'delete': False}">
+                                    <tree editable="bottom">
+                                        <field name="activo"/>
+                                        <field name="account_id" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mp_grupo_flujo_tree" model="ir.ui.view">
+        <field name="name">mp.grupo.provision.tree</field>
+        <field name="model">mp.grupo.provision</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="ir_account_mp_provision">
+        <field name="name">MP provision</field>
+        <field name="res_model">mp.provision</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="ir_account_mp_grupo_provision">
+        <field name="name">MP Grupo provision</field>
+        <field name="res_model">mp.grupo.provision</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="account_mp_provision_menu" parent="account.menu_finance_configuration" name="Provision" sequence="2"/>
+    <menuitem id="menu_action_account_mp_grupo_provision" name="MP Grupo Provision" sequence="5" action="ir_account_mp_grupo_provision" parent="account_mp_provision_menu"/>
+    <menuitem id="menu_action_account_mp_provision" name="MP Provision" sequence="10" action="ir_account_mp_provision" parent="account_mp_provision_menu"/>
+</odoo>
